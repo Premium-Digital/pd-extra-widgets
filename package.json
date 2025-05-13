@@ -1,0 +1,29 @@
+{
+  "name": "pd-extra-widgets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxkonar/pd-extra-widgets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxkonar/pd-extra-widgets/issues"
+  },
+  "homepage": "https://github.com/maxkonar/pd-extra-widgets#readme",
+  "devDependencies": {
+    "sass": "^1.86.0",
+    "terser": "^5.39.0",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
+  }
+}

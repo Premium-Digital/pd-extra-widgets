@@ -1,0 +1,15 @@
+{
+    "name": "stlpl/pd-extra-widgets",
+    "autoload": {
+        "psr-4": {
+            "PdExtraWidgets\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "maxkonar",
+            "email": "k.karasiewicz@premiumdigital.pl"
+        }
+    ],
+    "require": {}
+}
