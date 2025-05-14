@@ -16,7 +16,7 @@ jobs:
       - name: ⚙️ Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.2.12'
           tools: composer
 
       - name: 📦 Install Composer dependencies
@@ -37,7 +37,7 @@ jobs:
         run: |
           mkdir build
           zip -r build/pd-extra-widgets.zip . \
-            -x "*.git*" "*.github*" "node_modules/*" "vendor/*" "tests/*" "package-lock.json" ".DS_Store" "src/*"
+            -x "*.git*" "*.github*" "tests/*" ".DS_Store"
 
       - name: ⬆️ Upload artifact
         uses: actions/upload-artifact@v4
