@@ -1,0 +1,67 @@
+name: 🧠 Build on Plugin Version Change
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.diff.outputs.changed }}
+      new_version: ${{ steps.extract.outputs.version }}
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # potrzebne do diffów
+
+      - name: 📊 Check for version change
+        id: diff
+        run: |
+          PREV_COMMIT=$(git rev-parse HEAD~1)
+          CHANGED=$(git diff $PREV_COMMIT HEAD -- pd-extra-widgets.php | grep -c '^+.*Version:')
+          echo "changed=$CHANGED" >> $GITHUB_OUTPUT
+
+      - name: 🏷 Extract version from plugin
+        id: extract
+        run: |
+          VERSION=$(grep -oP 'Version:\s*\K[0-9.]+' pd-extra-widgets.php)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+  build:
+    needs: check-version
+    if: needs.check-version.outputs.changed == '1'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🧱 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🛠 Build plugin
+        run: npm run build
+
+      - name: 🗜 Create ZIP
+        run: |
+          mkdir build
+          zip -r build/pd-extra-widgets.zip . \
+            -x "*.git*" "*.github*" "node_modules/*" "src/*" "tests/*" "package-lock.json"
+
+      - name: 🚀 Release on GitHub
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.check-version.outputs.new_version }}
+          name: v${{ needs.check-version.outputs.new_version }}
+          files: build/pd-extra-widgets.zip
