@@ -3,6 +3,7 @@
 namespace PdExtraWidgets;
 
 use PdExtraWidgets\Widgets\ReadMoreWidget;
+use PdExtraWidgets\Updater;
 
 class PluginManager
 {
@@ -13,6 +14,7 @@ class PluginManager
     {
         add_action( 'elementor/widgets/register', [$this, 'register_widgets'] );
         $this->actions = new Actions();
+        Updater::init();
     }
 
     public function register_widgets($widgets_manager) {
