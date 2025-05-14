@@ -40,7 +40,7 @@ jobs:
         run: |
           mkdir build
           zip -r build/pd-extra-widgets.zip . \
-            -x "*.git*" "*.github*" "tests/*" ".DS_Store"
+            -x "*.git*" "*.github*" "tests/*" ".DS_Store" "node_modules/*" "src/*" "package-lock.json"
 
       - name: ⬆️ Upload artifact
         uses: actions/upload-artifact@v4
