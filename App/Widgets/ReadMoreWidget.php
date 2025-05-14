@@ -11,7 +11,7 @@ class ReadMoreWidget extends Widget_Base {
     }
 
     public function get_title() {
-        return 'Czytaj więcej';
+        return __('Read more', 'pd-extra-widgets');
     }
 
     public function get_icon() {
@@ -19,26 +19,7 @@ class ReadMoreWidget extends Widget_Base {
     }
 
     public function get_categories() {
-        return [ 'basic' ];
-    }
-
-    // Rejestracja CSS i JS
-    public function register_assets() {
-
-        wp_enqueue_style( 
-            'read-more-widget-style', 
-            PD_EXTRA_WIDGETS_PLUGIN_DIR_URL . '/dist/read-more-widget.css', 
-            [], 
-            '1.0.0'
-        );
-
-        wp_enqueue_script( 
-            'read-more-widget-script', 
-            PD_EXTRA_WIDGETS_PLUGIN_DIR_URL . 'assets/dist/read-more-widget.js', 
-            [], 
-            '1.0.0', 
-            true
-        );
+        return [ 'pd-extra-widgets' ];
     }
 
     protected function _register_controls() {
@@ -526,6 +507,4 @@ class ReadMoreWidget extends Widget_Base {
         </div>
         <?php
     }
-
-
 }

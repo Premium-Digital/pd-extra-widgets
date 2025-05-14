@@ -1,0 +1,145 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PD Extra Widgets\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-14 09:19+0000\n"
+"PO-Revision-Date: 2025-05-14 09:20+0000\n"
+"Last-Translator: \n"
+"Language-Team: Polish\n"
+"Language: pl_PL\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10 >= 2 && n%10<=4 "
+"&&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.7.2; wp-6.8.1\n"
+"X-Domain: pd-extra-widgets"
+
+#. Description of the plugin
+msgid "Add extra widgets for Premium Digital Organization"
+msgstr "Dodaje dodatkowe widgety dla organizacji Premium Digital"
+
+#: App/Widgets/ReadMoreWidget.php:109
+msgid "After"
+msgstr "Po"
+
+#: App/Widgets/ReadMoreWidget.php:173
+msgid "Animation Duration (ms)"
+msgstr "Czas trwania animacji (ms)"
+
+#: App/Widgets/ReadMoreWidget.php:323
+msgid "Background Color"
+msgstr "Kolor tła"
+
+#: App/Widgets/ReadMoreWidget.php:360
+msgid "Background Color (hover)"
+msgstr "Kolor tła (po najechaniu)"
+
+#: App/Widgets/ReadMoreWidget.php:105
+msgid "Before"
+msgstr "Przed"
+
+#: App/Widgets/ReadMoreWidget.php:224
+msgid "Border Radius"
+msgstr "Zaokrąglenie krawędzi"
+
+#: App/Widgets/ReadMoreWidget.php:65 App/Widgets/ReadMoreWidget.php:201
+msgid "Button"
+msgstr "Przycisk"
+
+#: App/Widgets/ReadMoreWidget.php:92
+msgid "Button Icon"
+msgstr "Ikona przycisku"
+
+#: App/Widgets/ReadMoreWidget.php:263
+msgid "Button Position"
+msgstr "Pozycja przycisku"
+
+#: App/Widgets/ReadMoreWidget.php:74
+msgid "Button Text "
+msgstr "Tekst przycisku"
+
+#: App/Widgets/ReadMoreWidget.php:271 App/Widgets/ReadMoreWidget.php:394
+msgid "Center"
+msgstr "Środek"
+
+#: App/Widgets/ReadMoreWidget.php:35 App/Widgets/ReadMoreWidget.php:377
+msgid "Content"
+msgstr "Zawartość"
+
+#: App/Widgets/ReadMoreWidget.php:83
+msgid "Expanded Button Text"
+msgstr "Tekst przycisku po rozwinięciu"
+
+#: App/Widgets/ReadMoreWidget.php:52
+msgid "Extended Text"
+msgstr "Rozszerzony tekst"
+
+#: App/Widgets/ReadMoreWidget.php:340
+msgid "Hover"
+msgstr "Po najechaniu"
+
+#: App/Widgets/ReadMoreWidget.php:144
+msgid "Icon Gap"
+msgstr "Odstęp między ikoną a tekstem"
+
+#: App/Widgets/ReadMoreWidget.php:101
+msgid "Icon Position"
+msgstr "Pozycja ikony"
+
+#: App/Widgets/ReadMoreWidget.php:124
+msgid "Icon Size"
+msgstr "Rozmiar ikony"
+
+#. Author of the plugin
+msgid "kkarasiewicz"
+msgstr "kkarasiewicz"
+
+#: App/Widgets/ReadMoreWidget.php:267 App/Widgets/ReadMoreWidget.php:390
+msgid "Left"
+msgstr "Lewa"
+
+#: App/Widgets/ReadMoreWidget.php:303
+msgid "Normal"
+msgstr "Normalny"
+
+#: App/Widgets/ReadMoreWidget.php:246
+msgid "Padding"
+msgstr "Margines wewnętrzny (padding)"
+
+#. Name of the plugin
+msgid "PD Extra Widgets"
+msgstr "PD Extra Widgets"
+
+#: App/Actions.php:42
+msgid "Pd Extra Widgets"
+msgstr "PD Extra Widgets"
+
+#: App/Widgets/ReadMoreWidget.php:85
+msgid "Read less"
+msgstr "Czytaj mniej"
+
+#: App/Widgets/ReadMoreWidget.php:14 App/Widgets/ReadMoreWidget.php:76
+msgid "Read more"
+msgstr "Czytaj więcej"
+
+#: App/Widgets/ReadMoreWidget.php:275 App/Widgets/ReadMoreWidget.php:398
+msgid "Right"
+msgstr "Prawa"
+
+#: App/Widgets/ReadMoreWidget.php:43
+msgid "Short Text"
+msgstr "Krótki tekst"
+
+#: App/Widgets/ReadMoreWidget.php:386
+msgid "Text Alignment"
+msgstr "Wyrównanie tekstu"
+
+#: App/Widgets/ReadMoreWidget.php:310 App/Widgets/ReadMoreWidget.php:414
+msgid "Text Color"
+msgstr "Kolor tekstu"
+
+#: App/Widgets/ReadMoreWidget.php:347
+msgid "Text Color (hover)"
+msgstr "Kolor tekstu (po najechaniu)"

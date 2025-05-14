@@ -1,0 +1,145 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PD Extra Widgets\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-14 09:19+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.7.2; wp-6.8.1\n"
+"X-Domain: pd-extra-widgets"
+
+#. Description of the plugin
+msgid "Add extra widgets for Premium Digital Organization"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:109
+msgid "After"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:173
+msgid "Animation Duration (ms)"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:323
+msgid "Background Color"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:360
+msgid "Background Color (hover)"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:105
+msgid "Before"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:224
+msgid "Border Radius"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:65 App/Widgets/ReadMoreWidget.php:201
+msgid "Button"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:92
+msgid "Button Icon"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:263
+msgid "Button Position"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:74
+msgid "Button Text "
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:271 App/Widgets/ReadMoreWidget.php:394
+msgid "Center"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:35 App/Widgets/ReadMoreWidget.php:377
+msgid "Content"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:83
+msgid "Expanded Button Text"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:52
+msgid "Extended Text"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:340
+msgid "Hover"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:144
+msgid "Icon Gap"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:101
+msgid "Icon Position"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:124
+msgid "Icon Size"
+msgstr ""
+
+#. Author of the plugin
+msgid "kkarasiewicz"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:267 App/Widgets/ReadMoreWidget.php:390
+msgid "Left"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:303
+msgid "Normal"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:246
+msgid "Padding"
+msgstr ""
+
+#. Name of the plugin
+msgid "PD Extra Widgets"
+msgstr ""
+
+#: App/Actions.php:42
+msgid "Pd Extra Widgets"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:85
+msgid "Read less"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:14 App/Widgets/ReadMoreWidget.php:76
+msgid "Read more"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:275 App/Widgets/ReadMoreWidget.php:398
+msgid "Right"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:43
+msgid "Short Text"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:386
+msgid "Text Alignment"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:310 App/Widgets/ReadMoreWidget.php:414
+msgid "Text Color"
+msgstr ""
+
+#: App/Widgets/ReadMoreWidget.php:347
+msgid "Text Color (hover)"
+msgstr ""

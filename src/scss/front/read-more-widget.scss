@@ -10,5 +10,13 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        
+        & > .button-icon{
+            vertical-align: middle;
+        }
+
+        & > .button-text{
+            vertical-align: middle;
+        }
     }
 }

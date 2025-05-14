@@ -2,8 +2,8 @@
 
 /**
  * Plugin Name: PD Extra Widgets
- * Description: Add extra widgets for Premium Digital Organization
- * Version: 1.00
+ * Description: Add extra elementor widgets
+ * Version: 1.01
  * Author: kkarasiewicz
  */
 
