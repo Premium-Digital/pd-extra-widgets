@@ -12,6 +12,7 @@
         }
     ],
     "require": {
-        "yahnis-elsts/plugin-update-checker": "^5.5"
+        "yahnis-elsts/plugin-update-checker": "^5.5",
+        "vlucas/phpdotenv": "^5.6"
     }
 }
