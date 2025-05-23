@@ -1,11 +1,11 @@
-.read-more-widget {
+.pd-ew-read-more-widget {
     .long-text {
         overflow: hidden;
         max-height: 0;  // Na początku tekst jest schowany
         //transition: max-height var(--animation-duration, 500ms) ease; // Dodajemy animację na max-height
     }
 
-    .read-more-button {
+    .pd-ew-read-more-button {
         display: inline-flex;
         align-items: center;
         justify-content: center;

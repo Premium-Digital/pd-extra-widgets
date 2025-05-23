@@ -1,8 +1,8 @@
 export function initReadMoreWidgets() {
-    const widgets = document.querySelectorAll('.read-more-widget'); // Wyszukaj wszystkie widgety
+    const widgets = document.querySelectorAll('.pd-ew-read-more-widget'); // Wyszukaj wszystkie widgety
     
     widgets.forEach(function(widget) {
-        const button = widget.querySelector('.read-more-button'); // Wyszukaj przycisk w danym widgetcie
+        const button = widget.querySelector('.pd-ew-read-more-button'); // Wyszukaj przycisk w danym widgetcie
         const longText = widget.querySelector('.long-text'); // Wyszukaj długi tekst w danym widgetcie
         const icon = button.querySelector('i'); // Wyszukaj ikonę w przycisku
 

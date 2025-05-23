@@ -1,8 +1,8 @@
 <?php
 
 namespace PdExtraWidgets;
-
-use PdExtraWidgets\Widgets\ReadMoreWidget;
+use PdExtraWidgets\Widgets\ReadMore\ReadMoreWidget;
+use PdExtraWidgets\Widgets\ScrollTabs\ScrollTabsWidget;
 use PdExtraWidgets\Updater;
 
 class PluginManager
@@ -18,8 +18,8 @@ class PluginManager
     }
 
     public function register_widgets($widgets_manager) {
-        $widget = new ReadMoreWidget();
-        $widgets_manager->register( $widget );
+        $widgets_manager->register(new ReadMoreWidget());
+        $widgets_manager->register(new ScrollTabsWidget());
     }
 
     public static function activate()
