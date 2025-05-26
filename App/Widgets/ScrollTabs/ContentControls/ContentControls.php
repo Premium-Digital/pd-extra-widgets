@@ -54,17 +54,44 @@ class ContentControls {
         ]);
 
         $this->widget->add_responsive_control('layout', [
-            'label'   => __('Layout Type', 'pd-extra-widgets'),
-            'type'    => Controls_Manager::SELECT,
-            'default' => 'two-columns',
+            'label' => __('Layout Type', 'pd-extra-widgets'),
+            'type' => \Elementor\Controls_Manager::CHOOSE,
             'options' => [
-                'one-column'  => __('One Column', 'pd-extra-widgets'),
-                'two-columns' => __('Two Columns', 'pd-extra-widgets'),
+                'column' => [
+                    'title' => __('One Column', 'pd-extra-widgets'),
+                    'icon'  => 'eicon-column',
+                ],
+                'row' => [
+                    'title' => __('Two Columns', 'pd-extra-widgets'),
+                    'icon'  => 'eicon-columns',
+                ],
+            ],
+            'toggle' => false,
+            'selectors' => [
+                '{{WRAPPER}} .scroll-tabs-widget .tabs-content' => 'flex-direction: {{VALUE}};',
+                '{{WRAPPER}} .scroll-tabs-widget' => '--layout: {{VALUE}};',
             ],
         ]);
 
-        $this->widget->add_responsive_control('image_position', [
-            'label'     => __('Image Position (for Two Columns)', 'pd-extra-widgets'),
+        $this->widget->add_responsive_control('tabs_direction', [
+            'label' => __('Tabs Direction', 'pd-extra-widgets'),
+            'type' => \Elementor\Controls_Manager::SELECT,
+            'options' => [
+                'column' => __('Vertical', 'pd-extra-widgets'),
+                'row' => __('Horizontal', 'pd-extra-widgets'),
+            ],
+            'default' => 'vertical',
+            'selectors' => [
+                '{{WRAPPER}} .scroll-tabs-widget.layout-column .tabs-column' => 'flex-direction: {{VALUE}};',
+                '{{WRAPPER}} .scroll-tabs-widget.layout-row .tabs-column' => 'flex-direction: {{VALUE}};',
+            ],
+            'condition' => [
+                'layout' => 'column',
+            ],
+        ]);
+
+        $this->widget->add_responsive_control('tabs_position', [
+            'label'     => __('Tabs position (for Two Columns)', 'pd-extra-widgets'),
             'type'      => Controls_Manager::CHOOSE,
             'label_block' => true,
             'options'   => [
@@ -77,16 +104,38 @@ class ContentControls {
                     'icon'  => 'eicon-h-align-right',
                 ],
             ],
-            'default'   => 'right',
+            'default'   => 'left',
             'condition' => [
-                'layout' => 'two-columns',
+                'layout' => 'row',
             ],
         ]);
 
         $this->widget->add_responsive_control(
+            'tab_width',
+            [
+                'label' => __('Tab Width', 'pd-extra-widgets'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'em'],
+                'range' => [
+                    'px' => [
+                        'min' => 50,
+                        'max' => 600,
+                    ],
+                    '%' => [
+                        'min' => 10,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .tab-item' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->widget->add_responsive_control(
             'tabs_vertical_alignment',
             [
-                'label' => __('Vertical Alignment', 'pd-extra-widgets'),
+                'label' => __('Tabs Vertical Alignment', 'pd-extra-widgets'),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => false,
                 'options' => [
@@ -98,15 +147,45 @@ class ContentControls {
                         'title' => __('Middle', 'pd-extra-widgets'),
                         'icon' => 'eicon-v-align-middle',
                     ],
-                    'bottom' => [
+                    'end' => [
                         'title' => __('Bottom', 'pd-extra-widgets'),
                         'icon' => 'eicon-v-align-bottom',
                     ],
                 ],
                 'default' => 'top',
-                'condition' => [
-                    'layout' => 'two-columns',
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .tabs-column' => 'align-self: {{VALUE}};',
                 ],
+                'condition' => [
+                    'layout' => 'row',
+                ],
+            ]
+        );
+
+        $this->widget->add_responsive_control(
+            'tabs_horizontal_alignment',
+            [
+                'label' => __('Tabs Horizontal Alignment', 'pd-extra-widgets'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'flex-start' => [
+                        'title' => __('Left', 'pd-extra-widgets'),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => __('Center', 'pd-extra-widgets'),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'flex-end' => [
+                        'title' => __('Right', 'pd-extra-widgets'),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'center',
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .tabs-column' => 'align-items: {{VALUE}}; justify-content: {{VALUE}};',
+                ],
+                'toggle' => false,
             ]
         );
 

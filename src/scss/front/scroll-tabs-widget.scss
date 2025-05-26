@@ -1,81 +1,77 @@
 .scroll-tabs-widget {
-  .tabs-content {
+
+  & .tabs-content {
     display: flex;
     flex-direction: row;
     gap: 2rem;
   }
 
-  .tab-item {
+  & .tabs-column {
+      width: 50%;
+      display: flex;
+  }
+  
+  & .tab-item {
     cursor: pointer;
   }
 
-  &.layout-one-column {
-    .tabs-content {
+  & .image-column,
+  & .tab-image {
+    animation: var(--image-animation, none) var(--animation-duration, 600ms) ease forwards;
+  }
+
+  &.layout-column {
+    & .tabs-column {
+      width: 100%;
+    }
+  }
+
+  &.layout-row {
+    &.tabs-left{
+      & .tabs-column {
+        order: 0;
+      }
+      & .image-column {
+        order: 1;
+      }
+    }
+
+    &.tabs-right{
+      & .tabs-column {
+        order: 1;
+      }
+      & .image-column {
+        order: 0;
+      }
+    }
+
+    & .image-column {
+      width: 50%;
+    }
+    
+    & .tabs-column {
       flex-direction: column;
-    }
-
-    .tab-item {
-      margin-bottom: 2rem;
-
-      .tab-image-wrapper {
-        margin-top: 1rem;
-
-        img {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
+      width: 50%;
+      flex-wrap: wrap;
+      
+      @media (max-width: 768px) {
+        width: 100%;
       }
-    }
-
-    .image-column {
-      display: none;
     }
   }
+}
 
-  &.layout-two-columns {
-    .tabs-column,
-    .image-column {
-      flex: 1;
-    }
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    .tab-image-wrapper {
-      display: none;
-    }
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 
-    &.image-left {
-      .tabs-content {
-        flex-direction: row-reverse;
-      }
-    }
-
-    &.image-right {
-      .tabs-content {
-        flex-direction: row;
-      }
-    }
-
-    &.align-top {
-      .tabs-column {
-        align-self: flex-start;
-      }
-    }
-
-    &.align-center {
-      .tabs-column {
-        align-self: center;
-      }
-    }
-
-    &.align-bottom {
-      .tabs-column {
-        align-self: flex-end;
-      }
-    }
-
-    .tabs-content {
-      align-items: stretch;
-      min-height: 100%;
-    }
-  }
+@keyframes zoom-in {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
