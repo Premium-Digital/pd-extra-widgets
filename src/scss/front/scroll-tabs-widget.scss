@@ -1,5 +1,8 @@
 .scroll-tabs-widget {
 
+  overscroll-behavior: contain;
+  touch-action: pan-x;
+
   & .tabs-content {
     display: flex;
     flex-direction: row;
