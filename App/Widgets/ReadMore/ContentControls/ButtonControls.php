@@ -40,6 +40,25 @@ class ButtonControls
             ]
         );
 
+        $this->widget->add_responsive_control(
+            'button_gap',
+            [
+                'label'     => __('Button gap', 'pd-extra-widgets'),
+                'type'      => Controls_Manager::SLIDER,
+                'size_units'=> ['px', 'em', 'rem'],
+                'range'     => [
+                    'px' => ['min' => 0, 'max' => 100],
+                ],
+                'default'   => [
+                    'unit' => 'px',
+                    'size' => 10,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .pd-ew-read-more-button' => 'margin-top: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->widget->add_control(
             'button_icon',
             [
