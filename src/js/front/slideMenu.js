@@ -11,12 +11,10 @@ export const slideMenu = () => {
             }
 
             wrapper.classList.toggle("open");
-            console.log('abc');
         }
 
         if (btnClose) {
             e.preventDefault();
-            console.log('close');
             const wrapper = btnClose.closest(".submenu-wrapper");
             wrapper.classList.remove("open");
         }
