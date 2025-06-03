@@ -1,6 +1,6 @@
 export const slideMenu = () => {
     document.addEventListener("click", (e) => {
-        const btnOpen = e.target.closest(".submenu-toggle");
+        const btnOpen = e.target.closest(".--open-submenu");
         const btnClose = e.target.closest(".submenu-back");
 
         if (btnOpen) {

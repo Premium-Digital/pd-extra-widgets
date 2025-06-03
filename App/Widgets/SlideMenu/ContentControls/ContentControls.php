@@ -28,35 +28,62 @@ class ContentControls
 
     public function register()
     {
-        $this->widget->start_controls_section('menu_section', [
-            'label' => __('Menu', 'pd-extra-widgets'),
-            'tab' => Controls_Manager::TAB_CONTENT,
-        ]);
+        $this->widget->start_controls_section(
+            'menu_section',
+            [
+                'label' => __('Menu', 'pd-extra-widgets'),
+                'tab' => Controls_Manager::TAB_CONTENT,
+            ]
+        );
 
-        $this->widget->add_control('menu', [
-            'label' => __('Menu', 'pd-extra-widgets'),
-            'type' => Controls_Manager::SELECT,
-            'options' => $this->get_list_wp_menus()
-        ]);
+        $this->widget->add_control(
+            'menu',
+            [
+                'label' => __('Menu', 'pd-extra-widgets'),
+                'type' => Controls_Manager::SELECT,
+                'options' => $this->get_list_wp_menus()
+            ]
+        );
 
-        $this->widget->add_control('bg_color', [
-            'label' => __('Submenu background color', 'pd-extra-widgets'),
-            'type' => Controls_Manager::COLOR,
-            'options' => $this->get_list_wp_menus()
-        ]);
+        $this->widget->add_control(
+            'bg_color',
+            [
+                'label' => __('Submenu background color', 'pd-extra-widgets'),
+                'type' => Controls_Manager::COLOR,
+                'options' => $this->get_list_wp_menus()
+            ]
+        );
 
-        $this->widget->add_control('toggle_icon', [
-            'label' => __('Toggler icon', 'pd-extra-widgets'),
-            'type' => Controls_Manager::MEDIA,
-            'options' => $this->get_list_wp_menus(),
-            'media_types' => ['svg']
-        ]);
+        $this->widget->add_control(
+            'toggle_icon',
+            [
+                'label' => __('Toggler icon', 'pd-extra-widgets'),
+                'type' => Controls_Manager::MEDIA,
+                'options' => $this->get_list_wp_menus(),
+                'media_types' => ['svg']
+            ]
+        );
 
-        $this->widget->add_control('back_text', [
-            'label' => __('Back text', 'pd-extra-widgets'),
-            'type' => Controls_Manager::TEXT,
-            'options' => $this->get_list_wp_menus()
-        ]);
+        $this->widget->add_control(
+            'back_text',
+            [
+                'label' => __('Back text', 'pd-extra-widgets'),
+                'type' => Controls_Manager::TEXT,
+                'options' => $this->get_list_wp_menus()
+            ]
+        );
+
+        $this->widget->add_control(
+            'open_submenu',
+            [
+                'label' => __('Submenu click target', 'pd-extra-widgets'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Arrow', 'pd-extra-widgets'),
+                'label_off' => esc_html__('Link', 'pd-extra-widgets'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
 
         $this->widget->end_controls_section();
     }
