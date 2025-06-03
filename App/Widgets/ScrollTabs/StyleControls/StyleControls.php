@@ -168,8 +168,36 @@ class StyleControls {
                 ],
             ]
         );
-
-
+        
+        $this->widget->add_responsive_control(
+            'tab_image_vertical_alignment',
+            [
+                'label' => __('Tab Image Vertical Alignment', 'pd-extra-widgets'),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'options' => [
+                    'start' => [
+                        'title' => __('Top', 'pd-extra-widgets'),
+                        'icon' => 'eicon-v-align-top',
+                    ],
+                    'center' => [
+                        'title' => __('Middle', 'pd-extra-widgets'),
+                        'icon' => 'eicon-v-align-middle',
+                    ],
+                    'end' => [
+                        'title' => __('Bottom', 'pd-extra-widgets'),
+                        'icon' => 'eicon-v-align-bottom',
+                    ],
+                ],
+                'default' => 'start',
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .image-column' => 'align-self: {{VALUE}};',
+                ],
+                'condition' => [
+                    'layout' => 'row',
+                ],
+            ]
+        );
 
         $this->widget->end_controls_section();
     }

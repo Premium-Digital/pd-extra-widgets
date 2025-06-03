@@ -139,7 +139,7 @@ class ContentControls {
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => false,
                 'options' => [
-                    'top' => [
+                    'start' => [
                         'title' => __('Top', 'pd-extra-widgets'),
                         'icon' => 'eicon-v-align-top',
                     ],
@@ -152,7 +152,7 @@ class ContentControls {
                         'icon' => 'eicon-v-align-bottom',
                     ],
                 ],
-                'default' => 'top',
+                'default' => 'start',
                 'selectors' => [
                     '{{WRAPPER}} .scroll-tabs-widget .tabs-column' => 'align-self: {{VALUE}};',
                 ],
