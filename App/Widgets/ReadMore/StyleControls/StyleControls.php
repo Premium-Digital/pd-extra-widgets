@@ -25,41 +25,7 @@ class StyleControls {
         $this->addDefaultButtonStyleControls();
         $this->addButtonNormalStyleControls();
         $this->addButtonHoverStyleControls();
-
-        // === BORDER RADIUS ===
-        $this->widget->add_control(
-            'button_border_radius',
-            [
-                'label' => __( 'Border Radius', 'pd-extra-widgets' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%' ],
-                'selectors' => [
-                    '{{WRAPPER}} .pd-ew-read-more-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        // === BOX SHADOW ===
-        $this->widget->add_group_control(
-            \Elementor\Group_Control_Box_Shadow::get_type(),
-            [
-                'name' => 'button_box_shadow',
-                'selector' => '{{WRAPPER}} .pd-ew-read-more-button',
-            ]
-        );
-
-        // === PADDING ===
-        $this->widget->add_responsive_control(
-            'button_padding',
-            [
-                'label' => __( 'Padding', 'pd-extra-widgets' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em' ],
-                'selectors' => [
-                    '{{WRAPPER}} .pd-ew-read-more-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+        $this->addButtonBorderStyleControls();
 
         $this->widget->end_controls_section();
 
@@ -75,7 +41,7 @@ class StyleControls {
         );
 
         // Text Alignment
-        $this->widget->add_control(
+        $this->widget->add_responsive_control(
             'text_align',
             [
                 'label' => __( 'Text Alignment', 'pd-extra-widgets' ),
@@ -243,5 +209,75 @@ class StyleControls {
 
         $this->widget->end_controls_tab();
         $this->widget->end_controls_tabs();
+    }
+
+    protected function addButtonBorderStyleControls() {
+        
+        $this->widget->add_control('button_color', [
+            'label' => __('Border Color', 'pd-extra-widgets'),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .pd-ew-read-more-button' => 'border-color: {{VALUE}};',
+            ],
+        ]);
+
+        $this->widget->add_control('button_border_style', [
+            'label' => __('Border Style', 'pd-extra-widgets'),
+            'type' => Controls_Manager::SELECT,
+            'default' => 'solid',
+            'options' => [
+                'none' => __('None', 'pd-extra-widgets'),
+                'solid' => __('Solid', 'pd-extra-widgets'),
+                'dashed' => __('Dashed', 'pd-extra-widgets'),
+                'dotted' => __('Dotted', 'pd-extra-widgets'),
+                'double' => __('Double', 'pd-extra-widgets'),
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .pd-ew-read-more-button' => 'border-style: {{VALUE}};',
+            ],
+        ]);
+
+        $this->widget->add_control('button_border_width', [
+            'label' => __('Border Width', 'pd-extra-widgets'),
+            'type' => Controls_Manager::DIMENSIONS,
+            'selectors' => [
+                '{{WRAPPER}} .pd-ew-read-more-button' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]);
+
+        // === BORDER RADIUS ===
+        $this->widget->add_control(
+            'button_border_radius',
+            [
+                'label' => __( 'Border Radius', 'pd-extra-widgets' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .pd-ew-read-more-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // === BOX SHADOW ===
+        $this->widget->add_group_control(
+            \Elementor\Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'button_box_shadow',
+                'selector' => '{{WRAPPER}} .pd-ew-read-more-button',
+            ]
+        );
+
+        // === PADDING ===
+        $this->widget->add_responsive_control(
+            'button_padding',
+            [
+                'label' => __( 'Padding', 'pd-extra-widgets' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} .pd-ew-read-more-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
     }
 }
