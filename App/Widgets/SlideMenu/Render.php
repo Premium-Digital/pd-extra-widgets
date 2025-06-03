@@ -19,7 +19,8 @@ trait Render
                 'walker' => new PremiumWalker([
                     'bgColor' => $settings['bg_color'],
                     'urlIcon' => $settings['toggle_icon'],
-                    'backText' => $settings['back_text']
+                    'backText' => $settings['back_text'],
+                    'target' => $settings['open_submenu']
                 ])
             ]); ?>
         </div>

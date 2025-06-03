@@ -12,12 +12,15 @@ class PremiumWalker extends Walker_Nav_Menu
 
     public string $bgColor;
 
+    public bool $target;
+
     public function __construct(array $data = [])
     {
         parent::__construct();
         $this->backText = isset($data['backText']) ? $data['backText'] : __('Back', 'pd-extra-widgets');
         $this->urlIcon = !empty($data['urlIcon']) ? $data['urlIcon']['url'] : '';
         $this->bgColor = isset($data['bgColor']) ? $data['bgColor'] : '';
+        $this->target = isset($data['target']) && $data['target'] === 'yes' ? true : false;
     }
 
     public function start_lvl(&$output, $depth = 0, $args = null): void
@@ -41,10 +44,15 @@ class PremiumWalker extends Walker_Nav_Menu
         $has_children = in_array('menu-item-has-children', $classes);
 
         $output .= '<li class="' . implode(' ', $classes) . '">';
-        $output .= '<a href="' . esc_attr($item->url) . '">' . esc_html($item->title) . '</a>';
+        if ($this->target) {
+            $output .= '<a href="' . esc_attr($item->url) . '">' . esc_html($item->title) . '</a>';
+
+        } else {
+            $output .= '<a href="#submenu" class="--open-submenu">' . esc_html($item->title) . '</a>';
+        }
 
         if ($has_children) {
-            $output .= '<button class="submenu-toggle button-slide-menu" aria-label="Rozwiń submenu" style="background: url(' . $this->urlIcon . ')!important"></button>';
+            $output .= '<button class="--open-submenu submenu-toggle button-slide-menu" aria-label="Rozwiń submenu" style="background: url(' . $this->urlIcon . ')!important"></button>';
         }
     }
 

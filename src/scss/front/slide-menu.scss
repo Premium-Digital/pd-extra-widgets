@@ -16,13 +16,13 @@
             > li {
                 padding: 18px 0;
                 display: flex;
-                gap: 10px;
                 border-bottom: 1px solid #E3E3E3;
                 font-size: 22px;
                 align-items: center;
     
                 a {
                     flex-grow: 1;
+                    padding-right: 10px;
                 }
             }
         }
@@ -88,6 +88,7 @@
     &:active {
         background: none;
         border: none;
+        color: inherit;
     }
 
     &:hover {
