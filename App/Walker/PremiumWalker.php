@@ -44,14 +44,16 @@ class PremiumWalker extends Walker_Nav_Menu
         $has_children = in_array('menu-item-has-children', $classes);
 
         $output .= '<li class="' . implode(' ', $classes) . '">';
-        if ($this->target) {
+
+        if(!$has_children) {
             $output .= '<a href="' . esc_attr($item->url) . '">' . esc_html($item->title) . '</a>';
-
         } else {
-            $output .= '<a href="#submenu" class="--open-submenu">' . esc_html($item->title) . '</a>';
-        }
-
-        if ($has_children) {
+            if ($this->target) {
+                $output .= '<a href="' . esc_attr($item->url) . '">' . esc_html($item->title) . '</a>';
+            } else {
+                $output .= '<a href="#submenu" class="--open-submenu">' . esc_html($item->title) . '</a>';
+            }
+            
             $output .= '<button class="--open-submenu submenu-toggle button-slide-menu" aria-label="Rozwiń submenu" style="background: url(' . $this->urlIcon . ')!important"></button>';
         }
     }
