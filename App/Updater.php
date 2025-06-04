@@ -22,7 +22,7 @@ class Updater
         $dotenv = Dotenv::createImmutable(PD_EXTRA_WIDGETS_PLUGIN_DIR_PATH);
         $dotenv->load();
 
-        $repoUrl = $_ENV['GITHUB_REPO'] ?? '';
+        $repoUrl = $_ENV['GITHUB_REPO'] ?? 'https://github.com/Premium-Digital/pd-extra-widgets';
 
         if (empty($repoUrl)) {
             error_log('[PD Extra Widgets] GITHUB_REPO is not set in your .env file.');
