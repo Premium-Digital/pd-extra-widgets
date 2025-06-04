@@ -10,7 +10,7 @@ export function initScrollTabsScrollNavigation() {
     let isAnimating = false;
     let touchStartY = 0;
     let touchEndY = 0;
-    let isScrollLocked = false; // nowa flaga blokująca szybki scroll
+    let isScrollLocked = false;
 
     const maxIndex = tabItems.length - 1;
 
@@ -51,7 +51,7 @@ export function initScrollTabsScrollNavigation() {
 
       setTimeout(() => {
         isAnimating = false;
-        isScrollLocked = false; // po animacji odblokuj scroll
+        isScrollLocked = false;
       }, animationDuration);
     };
 
@@ -59,7 +59,7 @@ export function initScrollTabsScrollNavigation() {
       if (!isWidgetCentered()) return;
       if (isAnimating || isScrollLocked) {
         e.preventDefault();
-        scrollToWidget(); // wymuś scroll do widgetu, żeby się nie "rozjechało"
+        scrollToWidget();
         return;
       }
 
@@ -73,13 +73,12 @@ export function initScrollTabsScrollNavigation() {
 
       const nextIndex = direction === 'down' ? activeIndex + 1 : activeIndex - 1;
       if (nextIndex >= 0 && nextIndex <= maxIndex) {
-        isScrollLocked = true;  // blokada szybkiego scrolla
+        isScrollLocked = true;
         changeTab(nextIndex);
         scrollToWidget();
       }
     };
 
-    // Kliknięcia
     tabItems.forEach((item, index) => {
       item.addEventListener('click', () => {
         if (index !== activeIndex && !isAnimating) {
@@ -89,7 +88,6 @@ export function initScrollTabsScrollNavigation() {
       });
     });
 
-    // Obsługa touch (swipe)
     const touchStartHandler = e => {
       touchStartY = e.touches[0].clientY;
     };
@@ -103,10 +101,11 @@ export function initScrollTabsScrollNavigation() {
       const scrollingDown = deltaY > 0;
       const scrollingUp = deltaY < 0;
 
-      if (
+      const canScrollTabs =
         (scrollingDown && activeIndex < maxIndex) ||
-        (scrollingUp && activeIndex > 0)
-      ) {
+        (scrollingUp && activeIndex > 0);
+
+      if (canScrollTabs) {
         e.preventDefault();
       }
     };
@@ -133,8 +132,51 @@ export function initScrollTabsScrollNavigation() {
     };
 
     window.addEventListener('wheel', scrollHandler, { passive: false });
-    window.addEventListener('touchstart', touchStartHandler, { passive: false });
-    window.addEventListener('touchmove', touchMoveHandler, { passive: false });
-    window.addEventListener('touchend', touchEndHandler, { passive: false });
+    widget.addEventListener('touchstart', touchStartHandler, { passive: true });
+    widget.addEventListener('touchmove', touchMoveHandler, { passive: false });
+    widget.addEventListener('touchend', touchEndHandler, { passive: true });
   });
+
+  let globalTouchStartY = 0;
+let globalTouchEndY = 0;
+let globalTouchedWidget = null;
+
+window.addEventListener('touchstart', e => {
+  globalTouchStartY = e.touches[0].clientY;
+
+  const target = e.target;
+  globalTouchedWidget = target.closest('.scroll-tabs-widget');
+}, { passive: true });
+
+window.addEventListener('touchmove', e => {
+  if (!globalTouchedWidget) return;
+
+  const rect = globalTouchedWidget.getBoundingClientRect();
+  const viewportMiddle = window.innerHeight / 2;
+  const isCentered = rect.top < viewportMiddle + 50 && rect.bottom > viewportMiddle - 50;
+  if (!isCentered) return;
+
+  globalTouchEndY = e.touches[0].clientY;
+  const deltaY = globalTouchStartY - globalTouchEndY;
+
+  const tabItems = globalTouchedWidget.querySelectorAll('.tab-item');
+  const activeIndex = Array.from(tabItems).findIndex(item => item.classList.contains('active'));
+  const maxIndex = tabItems.length - 1;
+
+  const scrollingDown = deltaY > 0;
+  const scrollingUp = deltaY < 0;
+
+  const canScrollTabs =
+    (scrollingDown && activeIndex < maxIndex) ||
+    (scrollingUp && activeIndex > 0);
+
+  if (canScrollTabs) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
+window.addEventListener('touchend', () => {
+  globalTouchedWidget = null;
+});
+
 }
