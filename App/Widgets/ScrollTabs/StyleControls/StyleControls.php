@@ -291,6 +291,24 @@ class StyleControls {
         $this->widget->start_controls_tab('tab_item_style_normal', [
             'label' => __('Normal', 'pd-extra-widgets'),
         ]);
+        
+        $this->widget->add_responsive_control(
+        'tab_item_opacity_normal',
+            [
+                'label' => __('Tab opacity', 'pd-extra-widgets'),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1,
+                        'step' => 0.01,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .tab-item' => 'opacity: {{SIZE}};',
+                ],
+            ]
+        );
 
         $this->widget->add_control('tab_item_bg_color_normal', [
             'label' => __('Background Color', 'pd-extra-widgets'),
@@ -348,6 +366,24 @@ class StyleControls {
             'label' => __('Hover', 'pd-extra-widgets'),
         ]);
 
+        $this->widget->add_responsive_control(
+        'tab_item_opacity_hover',
+            [
+                'label' => __('Tab opacity', 'pd-extra-widgets'),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1,
+                        'step' => 0.01,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .tab-item:hover' => 'opacity: {{SIZE}};',
+                ],
+            ]
+        );
+
         $this->widget->add_control('tab_item_bg_color_hover', [
             'label' => __('Background Color', 'pd-extra-widgets'),
             'type' => Controls_Manager::COLOR,
@@ -403,6 +439,27 @@ class StyleControls {
         $this->widget->start_controls_tab('tab_item_style_active', [
             'label' => __('Active', 'pd-extra-widgets'),
         ]);
+
+        $this->widget->add_responsive_control(
+        'tab_item_opacity_active',
+            [
+                'label' => __('Tab opacity', 'pd-extra-widgets'),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1,
+                        'step' => 0.01,
+                    ],
+                ],
+                'default' => [
+                    'size' => 1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .tab-item.active' => 'opacity: {{SIZE}};',
+                ],
+            ]
+        );
 
         $this->widget->add_control('tab_item_bg_color_active', [
             'label' => __('Background Color', 'pd-extra-widgets'),
