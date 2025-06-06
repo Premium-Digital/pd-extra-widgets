@@ -3,7 +3,7 @@
 /**
  * Plugin Name: PD Extra Widgets
  * Description: Add extra elementor widgets
- * Version: 1.0.10
+ * Version: 1.0.11
  * Author: kkarasiewicz
  */
 
@@ -20,6 +20,10 @@ if (!defined('PD_EXTRA_WIDGETS_PLUGIN_DIR_PATH')) {
 
 if (!defined('PD_EXTRA_WIDGETS_PLUGIN_DIR_URL')) {
     define('PD_EXTRA_WIDGETS_PLUGIN_DIR_URL', plugin_dir_url(__FILE__));
+}
+
+if (!defined('PD_EXTRA_WIDGETS_REPO_URL')) {
+    define('PD_EXTRA_WIDGETS_REPO_URL', 'https://github.com/Premium-Digital/pd-extra-widgets');
 }
 
 require PD_EXTRA_WIDGETS_PLUGIN_DIR_PATH . '/vendor/autoload.php';

@@ -3,14 +3,13 @@
 namespace PdExtraWidgets;
 
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-use Dotenv\Dotenv;
 
 class Updater
 {
     public static function init()
     {
-        if (!file_exists(PD_EXTRA_WIDGETS_PLUGIN_DIR_PATH . '.env')) {
-            error_log('[PD Extra Widgets] .env file not found. Please create a .env file with the GITHUB_REPO variable.');
+        if (!defined('PD_EXTRA_WIDGETS_REPO_URL')) {
+            error_log('[PD Extra Widgets] Constant PD_EXTRA_WIDGETS_REPO_URL is not defined.');
             return;
         }
 
@@ -19,20 +18,10 @@ class Updater
             return;
         }
 
-        $dotenv = Dotenv::createImmutable(PD_EXTRA_WIDGETS_PLUGIN_DIR_PATH);
-        $dotenv->load();
-
-        $repoUrl = $_ENV['GITHUB_REPO'] ?? 'https://github.com/Premium-Digital/pd-extra-widgets';
-
-        if (empty($repoUrl)) {
-            error_log('[PD Extra Widgets] GITHUB_REPO is not set in your .env file.');
-            return;
-        }
-
         $pluginFile = PD_EXTRA_WIDGETS_PLUGIN_DIR_PATH . '/pd-extra-widgets.php';
 
         $updateChecker = PucFactory::buildUpdateChecker(
-            $repoUrl,
+            PD_EXTRA_WIDGETS_REPO_URL,
             $pluginFile,
             'pd-extra-widgets'
         );
