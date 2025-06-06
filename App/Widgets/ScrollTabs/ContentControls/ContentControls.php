@@ -111,6 +111,32 @@ class ContentControls {
         ]);
 
         $this->widget->add_responsive_control(
+            'tab_gap',
+            [
+                'label' => __('Tab Gap', 'pd-extra-widgets'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'em'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'size' => 10,
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .tabs-content' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->widget->add_responsive_control(
             'tab_width',
             [
                 'label' => __('Tab Width', 'pd-extra-widgets'),

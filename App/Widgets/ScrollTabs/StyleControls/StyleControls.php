@@ -287,6 +287,22 @@ class StyleControls {
 
         $this->widget->start_controls_tabs('tab_item_style_tabs');
 
+        $this->widget->add_responsive_control(
+            'tab_item_description_visibility',
+            [
+                'label' => esc_html__('Description Visibility', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'active',
+                'options' => [
+                    'normal' => esc_html__('Always visible', 'plugin-name'),
+                    'hover' => esc_html__('On hover', 'plugin-name'),
+                    'active' => esc_html__('Only active', 'plugin-name'),
+                    'hover_active' => esc_html__('On hover and active', 'plugin-name'),
+                ],
+                'default' => 'normal',
+            ]
+        );
+
         // === Normal ===
         $this->widget->start_controls_tab('tab_item_style_normal', [
             'label' => __('Normal', 'pd-extra-widgets'),

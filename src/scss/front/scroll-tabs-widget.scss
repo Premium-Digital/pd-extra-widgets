@@ -1,67 +1,108 @@
 .scroll-tabs-widget {
   overscroll-behavior: contain;
 
-  & .tabs-content {
+  // Layout główny
+  .tabs-content {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
   }
 
-  & .tabs-column {
-      width: 50%;
-      display: flex;
-  }
-  
-  & .tab-item {
-    cursor: pointer;
-  }
+  .tabs-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 
-  & .image-column,
-  & .tab-image {
-    animation: var(--image-animation, none) var(--animation-duration, 600ms) ease forwards;
-  }
-
-  &.layout-column {
-    & .tabs-column {
+    @media (max-width: 768px) {
       width: 100%;
     }
   }
 
-  &.layout-row {
-    &.tabs-left{
-      & .tabs-column {
-        order: 0;
-      }
-      & .image-column {
-        order: 1;
-      }
-    }
+  .tab-item {
+    cursor: pointer;
 
-    &.tabs-right{
-      & .tabs-column {
-        order: 1;
-      }
-      & .image-column {
-        order: 0;
-      }
-    }
-
-    & .image-column {
-      width: 50%;
-    }
-    
-    & .tabs-column {
-      flex-direction: column;
-      width: 50%;
-      flex-wrap: wrap;
-      
-      @media (max-width: 768px) {
-        width: 100%;
-      }
+    p {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      transition: all 0.4s ease;
     }
   }
+
+  .image-column,
+  .tab-image {
+    animation: var(--image-animation, none) var(--animation-duration, 600ms) ease forwards;
+  }
+
+  // Układ kolumnowy
+  &.layout-column {
+    .tabs-column {
+      width: 100%;
+    }
+  }
+
+  // Układ wierszowy z pozycjonowaniem
+  &.layout-row {
+    &.tabs-left {
+      .tabs-column { order: 0; }
+      .image-column { order: 1; }
+    }
+
+    &.tabs-right {
+      .tabs-column { order: 1; }
+      .image-column { order: 0; }
+    }
+
+    .image-column {
+      width: 50%;
+    }
+  }
+
+  // Widoczność opisu
+
+  &.description-normal {
+    .tab-item p {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+  }
+
+  &.description-hover {
+    .tab-item:hover p {
+      opacity: 1;
+      max-height: 500px;
+      visibility: visible;
+    }
+  }
+
+  &.description-active {
+    .tab-item.active p {
+      opacity: 1;
+      max-height: 500px;
+      visibility: visible;
+    }
+  }
+
+  &.description-hover_active {
+    .tab-item:hover p,
+    .tab-item.active p {
+      opacity: 1;
+      max-height: 500px;
+      visibility: visible;
+    }
+  }
+  
+  .tab-item p.expanded {
+  opacity: 1;
+  visibility: visible;
+}
 }
 
+// Animacje obrazków
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }

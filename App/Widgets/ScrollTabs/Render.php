@@ -8,12 +8,14 @@ trait Render {
         $layout = $settings['layout'] ?? 'row';
         $animation = $settings['image_animation'] ?? 'fade';
         $animation_duration = $settings['image_animation_duration'] ?? '500';
+        $description_visibility = $settings['tab_item_description_visibility'] ?? 'normal';
+
 
         if (empty($settings['tabs']) || !is_array($settings['tabs'])) {
             return;
         }
 
-        $wrapperClass = 'scroll-tabs-widget layout-' . esc_attr($layout);
+        $wrapperClass = 'scroll-tabs-widget layout-' . esc_attr($layout) . ' description-' . esc_attr($description_visibility);
 
         if ($layout === 'row') {
             $tabsPosition = $settings['tabs_position'] ?? 'right';

@@ -180,3 +180,54 @@ window.addEventListener('touchend', () => {
 });
 
 }
+
+export function initScrollTabsDescription(widgetElement = document) {
+  const widgets = widgetElement.querySelectorAll('.scroll-tabs-widget');
+
+  widgets.forEach(widget => {
+    const descriptionModeClass = Array.from(widget.classList).find(cls =>
+      cls.startsWith('description-')
+    );
+
+    const items = widget.querySelectorAll('.tab-item');
+
+    items.forEach(item => {
+      const paragraph = item.querySelector('p');
+
+      const expand = () => {
+        paragraph.classList.add('expanded');
+        paragraph.style.maxHeight = paragraph.scrollHeight + 'px';
+      };
+
+      const collapse = () => {
+        paragraph.classList.remove('expanded');
+        paragraph.style.maxHeight = '0';
+      };
+
+      // Always visible
+      if (descriptionModeClass === 'description-normal') {
+        expand();
+      }
+
+      // On hover
+      if (descriptionModeClass === 'description-hover') {
+        item.addEventListener('mouseenter', expand);
+        item.addEventListener('mouseleave', collapse);
+      }
+
+      // On hover and active
+      if (descriptionModeClass === 'description-hover_active') {
+        if (item.classList.contains('active')) {
+          expand();
+        }
+
+        item.addEventListener('mouseenter', expand);
+        item.addEventListener('mouseleave', () => {
+          if (!item.classList.contains('active')) {
+            collapse();
+          }
+        });
+      }
+    });
+  });
+}
