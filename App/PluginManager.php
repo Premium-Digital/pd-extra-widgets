@@ -1,10 +1,11 @@
 <?php
 
 namespace PdExtraWidgets;
-use PdExtraWidgets\Widgets\ReadMore\ReadMoreWidget;
-use PdExtraWidgets\Widgets\ScrollTabs\ScrollTabsWidget;
-use PdExtraWidgets\Widgets\SlideMenu\SlideMenuWidget;
 use PdExtraWidgets\Updater;
+use PdExtraWidgets\Widgets\ReadMore\ReadMoreWidget;
+use PdExtraWidgets\Widgets\SlideMenu\SlideMenuWidget;
+use PdExtraWidgets\Widgets\ScrollTabs\ScrollTabsWidget;
+use PdExtraWidgets\Widgets\CopyrightText\CopyrightTextWidget;
 
 class PluginManager
 {
@@ -22,6 +23,7 @@ class PluginManager
         $widgets_manager->register(new ReadMoreWidget());
         $widgets_manager->register(new ScrollTabsWidget());
         $widgets_manager->register(new SlideMenuWidget());
+        $widgets_manager->register(new CopyrightTextWidget());
     }
 
     public static function activate()
