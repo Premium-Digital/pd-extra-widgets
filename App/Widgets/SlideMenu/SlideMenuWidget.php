@@ -28,5 +28,6 @@ class SlideMenuWidget extends Widget_Base {
 
     protected function _register_controls() {
         (new ContentControls($this))->register();
+        (new StyleControls($this))->register();
     }
 }

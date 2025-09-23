@@ -19,14 +19,13 @@ class PremiumWalker extends Walker_Nav_Menu
         parent::__construct();
         $this->backText = isset($data['backText']) ? $data['backText'] : __('Back', 'pd-extra-widgets');
         $this->urlIcon = !empty($data['urlIcon']) ? $data['urlIcon']['url'] : '';
-        $this->bgColor = isset($data['bgColor']) ? $data['bgColor'] : '';
         $this->target = isset($data['target']) && $data['target'] === 'yes' ? true : false;
     }
 
     public function start_lvl(&$output, $depth = 0, $args = null): void
     {
         $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<div class=\"submenu-wrapper\"\n" . 'style="background:' . $this->bgColor . '">';
+        $output .= "\n$indent<div class=\"submenu-wrapper\"\n>";
         $output .= "$indent\t<button class=\"submenu-back button-slide-menu\">" . $this->backText . '</button>';
         $output .= "$indent\t<ul class=\"sub-menu-slide\">\n";
     }
@@ -54,7 +53,7 @@ class PremiumWalker extends Walker_Nav_Menu
                 $output .= '<a href="#submenu" class="--open-submenu">' . esc_html($item->title) . '</a>';
             }
             
-            $output .= '<button class="--open-submenu submenu-toggle button-slide-menu" aria-label="Rozwiń submenu" style="background: url(' . $this->urlIcon . ')!important"></button>';
+            $output .= '<button class="--open-submenu submenu-toggle button-slide-menu" aria-label="Rozwiń submenu" style="background-image: url(' . $this->urlIcon . ')!important"></button>';
         }
     }
 

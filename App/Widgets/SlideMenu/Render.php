@@ -17,7 +17,6 @@ trait Render
             wp_nav_menu([
                 'menu' => $settings['menu'],
                 'walker' => new PremiumWalker([
-                    'bgColor' => $settings['bg_color'],
                     'urlIcon' => $settings['toggle_icon'],
                     'backText' => $settings['back_text'],
                     'target' => $settings['open_submenu']
