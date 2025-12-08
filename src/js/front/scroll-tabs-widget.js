@@ -2,6 +2,10 @@ export function initScrollTabsScrollNavigation() {
   const widgets = document.querySelectorAll('.scroll-tabs-widget');
 
   widgets.forEach(widget => {
+    let widgetActive = false; // when true, widget intercepts scroll to navigate tabs
+    let widgetActivePending = false; // when true, widget is waiting to become active (center animation)
+    const centerLockDelay = 350; // ms to wait before activating widget mode
+    let centerLockTimeout = null;
     const tabItems = widget.querySelectorAll('.tab-item');
     const tabImage = widget.querySelector('.tab-image');
     const animationDuration = parseInt(widget.dataset.animationDuration) || 600;
@@ -19,6 +23,40 @@ export function initScrollTabsScrollNavigation() {
       const viewportMiddle = window.innerHeight / 2;
       return rect.top < viewportMiddle + 50 && rect.bottom > viewportMiddle - 50;
     };
+
+    // Monitor window scroll to lock/unlock widget interaction
+
+    const onWindowScroll = () => {
+      const centered = isWidgetCentered();
+      if (centered && !widgetActive && !widgetActivePending) {
+        // When widget becomes centered, snap it to center and schedule activation
+        scrollToWidget();
+        widgetActivePending = true;
+        // Clear any existing timeout
+        if (centerLockTimeout) {
+          clearTimeout(centerLockTimeout);
+        }
+        centerLockTimeout = setTimeout(() => {
+          widgetActive = true;
+          widgetActivePending = false;
+          centerLockTimeout = null;
+        }, centerLockDelay);
+      }
+
+      if (!centered) {
+        // If user scrolls away, cancel pending activation and exit widget mode
+        if (widgetActivePending && centerLockTimeout) {
+          clearTimeout(centerLockTimeout);
+          centerLockTimeout = null;
+          widgetActivePending = false;
+        }
+        if (widgetActive) {
+          widgetActive = false;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', onWindowScroll, { passive: true });
 
     const scrollToWidget = () => {
       const rect = widget.getBoundingClientRect();
@@ -56,26 +94,50 @@ export function initScrollTabsScrollNavigation() {
     };
 
     const scrollHandler = e => {
-      if (!isWidgetCentered()) return;
-      if (isAnimating || isScrollLocked) {
+      // If widget is not in active mode, ignore wheel unless it becomes centered now
+      if (!widgetActive && !isWidgetCentered()) return;
+
+      // If widget just reached center, stop the page and schedule activation (delay)
+      if (!widgetActive && isWidgetCentered()) {
         e.preventDefault();
         scrollToWidget();
-        return;
+        if (!widgetActivePending) {
+          widgetActivePending = true;
+          if (centerLockTimeout) {
+            clearTimeout(centerLockTimeout);
+          }
+          centerLockTimeout = setTimeout(() => {
+            widgetActive = true;
+            widgetActivePending = false;
+            centerLockTimeout = null;
+          }, centerLockDelay);
+        }
+        return; // require next wheel after activation to change tab
       }
 
-      const direction = e.deltaY > 0 ? 'down' : 'up';
+      // When widget is active, intercept scrolls to navigate tabs
+      if (widgetActive) {
+        if (isAnimating || isScrollLocked) {
+          e.preventDefault();
+          scrollToWidget();
+          return;
+        }
 
-      if ((activeIndex === 0 && direction === 'up') || (activeIndex === maxIndex && direction === 'down')) {
-        return;
-      }
+        const direction = e.deltaY > 0 ? 'down' : 'up';
 
-      e.preventDefault();
+        if ((activeIndex === 0 && direction === 'up') || (activeIndex === maxIndex && direction === 'down')) {
+          // let the page scroll past the widget edges
+          return;
+        }
 
-      const nextIndex = direction === 'down' ? activeIndex + 1 : activeIndex - 1;
-      if (nextIndex >= 0 && nextIndex <= maxIndex) {
-        isScrollLocked = true;
-        changeTab(nextIndex);
-        scrollToWidget();
+        e.preventDefault();
+
+        const nextIndex = direction === 'down' ? activeIndex + 1 : activeIndex - 1;
+        if (nextIndex >= 0 && nextIndex <= maxIndex) {
+          isScrollLocked = true;
+          changeTab(nextIndex);
+          scrollToWidget();
+        }
       }
     };
 
@@ -93,7 +155,8 @@ export function initScrollTabsScrollNavigation() {
     };
 
     const touchMoveHandler = e => {
-      if (!isWidgetCentered()) return;
+      // If widget is not active but becomes centered during touch, snap and activate
+      if (!widgetActive && !isWidgetCentered()) return;
 
       touchEndY = e.touches[0].clientY;
       const deltaY = touchStartY - touchEndY;
@@ -105,13 +168,30 @@ export function initScrollTabsScrollNavigation() {
         (scrollingDown && activeIndex < maxIndex) ||
         (scrollingUp && activeIndex > 0);
 
-      if (canScrollTabs) {
+      if (!widgetActive && isWidgetCentered()) {
+        e.preventDefault();
+        scrollToWidget();
+        if (!widgetActivePending) {
+          widgetActivePending = true;
+          if (centerLockTimeout) {
+            clearTimeout(centerLockTimeout);
+          }
+          centerLockTimeout = setTimeout(() => {
+            widgetActive = true;
+            widgetActivePending = false;
+            centerLockTimeout = null;
+          }, centerLockDelay);
+        }
+        return;
+      }
+
+      if (widgetActive && canScrollTabs) {
         e.preventDefault();
       }
     };
 
     const touchEndHandler = () => {
-      if (!isWidgetCentered() || isAnimating || isScrollLocked) return;
+      if ((!isWidgetCentered() && !widgetActive) || isAnimating || isScrollLocked) return;
 
       const deltaY = touchStartY - touchEndY;
 

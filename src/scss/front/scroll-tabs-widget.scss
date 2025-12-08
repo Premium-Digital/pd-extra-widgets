@@ -21,6 +21,11 @@
   .tab-item {
     cursor: pointer;
 
+    h3 {
+      margin-block-start: 0px;
+      margin-block-end: 0px;
+    }
+    
     p {
       opacity: 0;
       max-height: 0;

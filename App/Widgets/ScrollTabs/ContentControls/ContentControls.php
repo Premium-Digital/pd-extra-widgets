@@ -37,6 +37,11 @@ class ContentControls {
             'label' => __( 'Image', 'pd-extra-widgets' ),
             'type' => Controls_Manager::MEDIA,
         ]);
+        $repeater->add_control('tab_icon', [
+            'label' => __( 'Icon (SVG)', 'pd-extra-widgets' ),
+            'type' => Controls_Manager::MEDIA,
+            'description' => __('Upload or select an SVG to use as tab icon. SVGs preserve colors if designed with currentColor.', 'pd-extra-widgets'),
+        ]);
         $this->widget->add_control('tabs', [
             'label' => __( 'Tabs', 'pd-extra-widgets' ),
             'type' => Controls_Manager::REPEATER,

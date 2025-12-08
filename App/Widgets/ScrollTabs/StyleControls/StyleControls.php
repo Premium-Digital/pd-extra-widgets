@@ -199,6 +199,101 @@ class StyleControls {
             ]
         );
 
+        // Icon styling
+        $this->widget->add_control('tab_icon_position', [
+            'label' => __('Icon Position', 'pd-extra-widgets'),
+            'type' => Controls_Manager::SELECT,
+            'options' => [
+                'top' => __('Top', 'pd-extra-widgets'),
+                'left' => __('Left', 'pd-extra-widgets'),
+                'right' => __('Right', 'pd-extra-widgets'),
+            ],
+            'default' => 'top',
+            'selectors' => [
+                '{{WRAPPER}} .scroll-tabs-widget .tab-item-inner.icon-top' => 'display:flex; flex-direction: column;',
+                '{{WRAPPER}} .scroll-tabs-widget .tab-item-inner.icon-left' => 'display:flex; flex-direction: row;',
+                '{{WRAPPER}} .scroll-tabs-widget .tab-item-inner.icon-right' => 'display:flex; flex-direction: row-reverse;',
+            ],
+        ]);
+
+        $this->widget->add_responsive_control(
+            'tab_icon_width',
+            [
+                'label' => __('Icon Width', 'pd-extra-widgets'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'em'],
+                'range' => [
+                    'px' => ['min' => 8, 'max' => 200],
+                ],
+                'default' => ['size' => 32, 'unit' => 'px'],
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .tab-item .tab-icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->widget->add_responsive_control(
+            'tab_icon_margin',
+            [
+                'label' => __('Icon Margin', 'pd-extra-widgets'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .tab-item .tab-icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->widget->add_control('tab_icon_alignment', [
+            'label' => __('Icon Alignment', 'pd-extra-widgets'),
+            'type' => Controls_Manager::CHOOSE,
+            'options' => [
+                'flex-start' => ['title' => __('Left', 'pd-extra-widgets'), 'icon' => 'eicon-text-align-left'],
+                'center' => ['title' => __('Center', 'pd-extra-widgets'), 'icon' => 'eicon-text-align-center'],
+                'flex-end' => ['title' => __('Right', 'pd-extra-widgets'), 'icon' => 'eicon-text-align-right'],
+            ],
+            'default' => 'center',
+            'selectors' => [
+                '{{WRAPPER}} .scroll-tabs-widget .tab-item .tab-icon-wrapper' => 'display:flex; justify-content: {{VALUE}};',
+            ],
+        ]);
+
+        $this->widget->add_responsive_control(
+            'tab_icon_vertical_alignment',
+            [
+                'label' => __('Icon Vertical Alignment', 'pd-extra-widgets'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'flex-start' => [ 'title' => __('Top', 'pd-extra-widgets'), 'icon' => 'eicon-v-align-top' ],
+                    'center' => [ 'title' => __('Middle', 'pd-extra-widgets'), 'icon' => 'eicon-v-align-middle' ],
+                    'flex-end' => [ 'title' => __('Bottom', 'pd-extra-widgets'), 'icon' => 'eicon-v-align-bottom' ],
+                ],
+                'default' => 'center',
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .tab-item .tab-item-inner' => 'align-items: {{VALUE}};',
+                    '{{WRAPPER}} .scroll-tabs-widget.icon-top .tab-item .tab-icon-wrapper' => 'align-self: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->widget->add_responsive_control(
+            'tab_icon_content_gap',
+            [
+                'label' => __('Gap Between Icon and Content', 'pd-extra-widgets'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range' => [
+                    'px' => ['min' => 0, 'max' => 100],
+                    'em' => ['min' => 0, 'max' => 5, 'step' => 0.1],
+                ],
+                'default' => ['size' => 12, 'unit' => 'px'],
+                'selectors' => [
+                    '{{WRAPPER}} .scroll-tabs-widget .tab-item .tab-item-inner' => 'gap: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .scroll-tabs-widget.icon-top .tab-item' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->widget->end_controls_section();
     }
 
