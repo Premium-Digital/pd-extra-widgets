@@ -4,7 +4,6 @@ namespace PdExtraWidgets\Widgets\ScrollTabs;
 use Elementor\Widget_Base;
 
 use PdExtraWidgets\Widgets\ScrollTabs\ContentControls\ContentControls;
-use PdExtraWidgets\Widgets\ScrollTabs\ContentControls\ButtonControls;
 use PdExtraWidgets\Widgets\ScrollTabs\StyleControls\StyleControls;
 use PdExtraWidgets\Widgets\ScrollTabs\Render;
 
