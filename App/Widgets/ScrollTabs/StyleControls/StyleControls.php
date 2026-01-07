@@ -14,6 +14,7 @@ class StyleControls {
     public function register() {
         $this->contentStyleControls();
         $this->tabsStyleControls();
+        $this->tabIconStyleControls();
         $this->tabItemStyleControls();
     }
 
@@ -52,7 +53,6 @@ class StyleControls {
             ]
         );
 
-        // Styl tytułu tabów
         $this->widget->add_control(
             'tab_title_color',
             [
@@ -73,7 +73,6 @@ class StyleControls {
             ]
         );
 
-        // Styl opisu tabów
         $this->widget->add_control(
             'tab_description_color',
             [
@@ -199,7 +198,18 @@ class StyleControls {
             ]
         );
 
-        // Icon styling
+        $this->widget->end_controls_section();
+    }
+
+    protected function tabIconStyleControls() {
+        $this->widget->start_controls_section(
+            'tab_icon_style_section',
+            [
+                'label' => __('Tab icon', 'pd-extra-widgets'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
         $this->widget->add_control('tab_icon_position', [
             'label' => __('Icon Position', 'pd-extra-widgets'),
             'type' => Controls_Manager::SELECT,
@@ -398,7 +408,6 @@ class StyleControls {
             ]
         );
 
-        // === Normal ===
         $this->widget->start_controls_tab('tab_item_style_normal', [
             'label' => __('Normal', 'pd-extra-widgets'),
         ]);
@@ -472,7 +481,6 @@ class StyleControls {
 
         $this->widget->end_controls_tab();
 
-        // === Hover ===
         $this->widget->start_controls_tab('tab_item_style_hover', [
             'label' => __('Hover', 'pd-extra-widgets'),
         ]);
@@ -546,7 +554,6 @@ class StyleControls {
 
         $this->widget->end_controls_tab();
 
-        // === Active ===
         $this->widget->start_controls_tab('tab_item_style_active', [
             'label' => __('Active', 'pd-extra-widgets'),
         ]);
