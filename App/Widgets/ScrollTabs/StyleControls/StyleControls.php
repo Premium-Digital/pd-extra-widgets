@@ -227,7 +227,7 @@ class StyleControls {
                 ],
                 'default' => ['size' => 32, 'unit' => 'px'],
                 'selectors' => [
-                    '{{WRAPPER}} .scroll-tabs-widget .tab-item .tab-icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .scroll-tabs-widget .tab-item .tab-icon' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}; max-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );

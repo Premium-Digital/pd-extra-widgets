@@ -3,7 +3,7 @@
 /**
  * Plugin Name: PD Extra Widgets
  * Description: Add extra elementor widgets
- * Version: 1.0.16
+ * Version: 1.0.17
  * Author: kkarasiewicz
  */
 
